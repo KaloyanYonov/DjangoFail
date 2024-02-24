@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<section id="delete-page" class="auth">
+    <form action="{% url 'car_delete_confirm' car.id %}" method="post">
+        {% csrf_token %}
+        <div class="container">
+            <h1>Delete Car</h1>
+            <label for="type">Type:</label>
+            <input type="text" name="type" value="{{ car.type }}" readonly id="type" class="readonly-input">
+
+            <label for="model">Model:</label>
+            <input type="text" name="model" value="{{ car.model }}" readonly id="model" class="readonly-input">
+
+            <label for="year">Year:</label>
+            <input type="number" name="year" value="{{ car.year }}" readonly id="year" class="readonly-input">
+
+            <label for="image_url">Image URL:</label>
+            <input type="url" name="image_url" value="{{ car.image_url }}" readonly id="image_url" class="readonly-input">
+
+            <label for="price">Price:</label>
+            <input type="number" name="price" value="{{ car.price }}" step="any" readonly id="price" class="readonly-input">
+
+            <input class="btn submit" type="submit" value="Delete Car">
+        </div>
+    </form>
+</section>
+{% endblock %}
+
+

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+<section id="create-page" class="auth">
+    <form id="edit-car-form" method="post" action="{% url 'car_edit' car.id %}">
+        {% csrf_token %}
+        <div class="container">
+            <h1>Edit Car</h1>
+            <label for="type">Type:</label>
+            <select name="type" required="" id="type">
+                <option value="">---------</option>
+                {% for option in form.type.choices %}
+                    <option value="{{ option.0 }}" {% if form.type.value == option.0 %} selected {% endif %}>{{ option.1 }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="model">Model:</label>
+            {{ form.model }}
+
+            <label for="year">Year:</label>
+            {{ form.year }}
+
+            <label for="image_url">Image URL:</label>
+            {{ form.image_url }}
+
+            <label for="price">Price:</label>
+            {{ form.price }}
+
+            {% if form.errors %}
+                <div class="form-errors">
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <p><strong>{{ field.label }}:</strong> {{ error }}</p>
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <input class="btn submit" type="submit" value="Edit Car" />
+        </div>
+    </form>
+</section>
+{% endblock %}
+

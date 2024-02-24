@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<section id="create-page" class="auth">
+    <div class="container">
+        <h1>Are you sure you want to delete your profile?</h1>
+        <form action="{% url 'profile_delete' user.id %}" method="post">
+            {% csrf_token %}
+            <p>This action cannot be undone. This will permanently delete your profile and all associated cars.</p>
+            <input class="btn submit" type="submit" value="Yes">
+            <a href="{% url 'profile_detail' user.id %}" class="btn cancel">Cancel</a>
+        </form>
+    </div>
+</section>
+{% endblock %}
+

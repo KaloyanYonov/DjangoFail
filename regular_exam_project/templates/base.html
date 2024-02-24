@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'style/style.css'%}"/>
+    <title>WorldOfSpeed</title>
+</head>
+<body>
+<header>
+    <!-- Navigation Bar -->
+    <h1><a class="index-navigation" href="#"
+    ><span>World of Speed</span></a
+    ></h1>
+    <nav>
+        {% if user_has_profile %}
+            <a href="{% url 'catalogue' %}">Catalogue</a>
+            <a href="{% url 'create_car' %}">Create Car</a>
+            <a href="{% url 'profile' %}">Profile</a>
+        {% else %}
+            <a href="{% url 'profiles:profile_create' %}">Create Profile</a>
+        {% endif %}
+    </nav>
+</header>
+
+<!-- footer -->
+{% block main_content %}
+{% endblock %}
+<footer>&copy;SoftUni Team 2024. All rights reserved.</footer>
+</div>
+</body>
+</html>
